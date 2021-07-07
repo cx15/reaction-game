@@ -1,4 +1,9 @@
 basic.pause(randint(0, 2000))
-basic.showString("A")
+if (Math.randomBoolean()) {
+    basic.showString("A")
+} else {
+    basic.showString("B")
+}
+
 basic.pause(1000)
 basic.clearScreen()
