@@ -7,8 +7,8 @@ let letter_showing = ""
 let score = 0
 let lives = 3
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
-    let score: number;
-    let lives: number;
+    
+    //  Looks like we needed to make these variables global here too.  I'll research that a bit.
     if (letter_showing == "A") {
         music.playTone(462, music.beat(BeatFraction.Whole))
         score = score + 1
@@ -19,8 +19,7 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
     
 })
 input.onButtonPressed(Button.B, function on_button_pressed_B() {
-    let score: number;
-    let lives: number;
+    
     if (letter_showing == "B") {
         music.playTone(462, music.beat(BeatFraction.Whole))
         score = score + 1
@@ -30,6 +29,7 @@ input.onButtonPressed(Button.B, function on_button_pressed_B() {
     }
     
 })
+//  TODO: replace this with a better way to die
 basic.forever(function on_forever() {
     
     
@@ -46,8 +46,10 @@ basic.forever(function on_forever() {
     basic.pause(1000)
     basic.clearScreen()
     letter_showing = ""
-    if (lives == 0) {
+    if (lives <= 0) {
+        //  If you die enough times it's possible for your lives to be less than zero! 
         basic.showNumber(score)
+        basic.pause(10000)
     }
     
 })
