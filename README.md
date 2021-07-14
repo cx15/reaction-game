@@ -1,6 +1,6 @@
 ## A Reaction Game for the BBC Microbit
 
-The gameplay is simple: a letter A or a letter B will flash up at every increasing frequencies. You need to press the corresponding button. Get it wrong an you lose a life.
+The gameplay is simple: a letter A or a letter B will flash up at ever increasing frequencies. You need to press the corresponding button. Get it wrong an you lose a life.
 
 
 
