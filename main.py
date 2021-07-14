@@ -5,15 +5,34 @@
 # or press too late they lose points.
 letter_showing = ""
 
+score = 0
+
+lives = 3
+
+
 def on_button_pressed_a():
     if letter_showing == "A":
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
+        score = score + 1
     else:
         music.play_tone(162, music.beat(BeatFraction.WHOLE))
+        lives = lives - 1
 input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_button_pressed_B():
+    if letter_showing == "B":
+        music.play_tone(462, music.beat(BeatFraction.WHOLE))
+        score = score + 1
+    else:
+        music.play_tone(162, music.beat(BeatFraction.WHOLE))
+        lives = lives - 1
+input.on_button_pressed(Button.B, on_button_pressed_B)
+
 
 def on_forever():
     global letter_showing
+    global lives 
+    global score 
     basic.pause(randint(0, 2000))
     if Math.random_boolean():
         letter_showing = "A"
@@ -24,4 +43,8 @@ def on_forever():
     basic.pause(1000)
     basic.clear_screen()
     letter_showing = ""
+    if lives == 0: 
+        basic.show_number(score)
+
 basic.forever(on_forever)
+
