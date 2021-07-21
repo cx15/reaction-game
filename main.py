@@ -32,9 +32,7 @@ input.on_button_pressed(Button.B, on_button_pressed_B)
 
 
 def on_forever():
-    global letter_showing
-    global lives 
-    global score 
+    global letter_showing, lives, score 
     basic.pause(randint(0, 2000))
     if Math.random_boolean():
         letter_showing = "A"

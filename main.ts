@@ -32,8 +32,6 @@ input.onButtonPressed(Button.B, function on_button_pressed_B() {
 //  TODO: replace this with a better way to die
 basic.forever(function on_forever() {
     
-    
-    
     basic.pause(randint(0, 2000))
     if (Math.randomBoolean()) {
         letter_showing = "A"
