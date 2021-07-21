@@ -3,22 +3,25 @@
 //  The user must press the corresponding button within that
 //  time to score a point.  If they press the wrong button
 //  or press too late they lose points.
-let letter_showing = ""
 let score = 0
-let lives = 3
+let letter_showing = ""
+let lives = 0
+let isdead = false
+lives = 3
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
     
-    //  Looks like we needed to make these variables global here too.  I'll research that a bit.
     if (letter_showing == "A") {
+        letter_showing = ""
         music.playTone(462, music.beat(BeatFraction.Whole))
         score = score + 1
     } else {
         music.playTone(162, music.beat(BeatFraction.Whole))
         lives = lives - 1
+        check_if_dead()
     }
     
 })
-input.onButtonPressed(Button.B, function on_button_pressed_B() {
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
     
     if (letter_showing == "B") {
         music.playTone(462, music.beat(BeatFraction.Whole))
@@ -29,6 +32,18 @@ input.onButtonPressed(Button.B, function on_button_pressed_B() {
     }
     
 })
+function check_if_dead() {
+    
+    if (lives <= 0) {
+        //  Yes, we're dead.
+        isdead = true
+        basic.showIcon(IconNames.Ghost)
+        music.playMelody("C5 A B G A F G E ", 120)
+        basic.showNumber(score)
+    }
+    
+}
+
 //  TODO: replace this with a better way to die
 basic.forever(function on_forever() {
     
@@ -45,7 +60,7 @@ basic.forever(function on_forever() {
     basic.clearScreen()
     letter_showing = ""
     if (lives <= 0) {
-        //  If you die enough times it's possible for your lives to be less than zero! 
+        //  If you die enough times it's possible for your lives to be less than zero!
         basic.showNumber(score)
         basic.pause(10000)
     }
