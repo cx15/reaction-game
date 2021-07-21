@@ -9,9 +9,11 @@ score = 0
 
 lives = 3
 
+isdead = False
 
 def on_button_pressed_a():
     if letter_showing == "A":
+        letter_showing = ""
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
         score = score + 1
     else:
@@ -43,7 +45,7 @@ def on_forever():
     basic.pause(1000)
     basic.clear_screen()
     letter_showing = ""
-    if lives == 0: 
+    if lives <= 0: 
         basic.show_number(score)
 
 basic.forever(on_forever)
