@@ -11,15 +11,15 @@ isdead = False
 lives = 3
 
 
-
 def on_button_pressed_a():
     global letter_showing, score, lives
     if letter_showing == "A":
         letter_showing = ""
+        basic.clear_screen()
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
         score = score + 1
     else:
-        music.play_tone(162, music.beat(BeatFraction.WHOLE))
+        music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
         check_if_dead()
 input.on_button_pressed(Button.A, on_button_pressed_a)
@@ -30,7 +30,7 @@ def on_button_pressed_b():
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
         score = score + 1
     else:
-        music.play_tone(162, music.beat(BeatFraction.WHOLE))
+        music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
@@ -40,24 +40,26 @@ def check_if_dead():
         # Yes, we're dead.
         isdead = True
         basic.show_icon(IconNames.GHOST)
-        music.play_melody("C5 A B G A F G E ", 120)
+        #music.play_melody("C5 A B G A F G E ", 120)
+        basic.pause(2000)
         basic.show_number(score)
 
 
 def on_forever():
-    global letter_showing
-    basic.pause(randint(0, 2000))
-    if Math.random_boolean():
-        letter_showing = "A"
-        basic.show_string("A")
+    global letter_showing, isdead
+    if not isdead:
+        basic.pause(randint(0, 2000))
+        if Math.random_boolean():
+            letter_showing = "A"
+            basic.show_string("A")
+        else:
+            letter_showing = "B"
+            basic.show_string("B")
+        basic.pause(1000)
+        basic.clear_screen()
+        letter_showing = ""
     else:
-        letter_showing = "B"
-        basic.show_string("B")
-    basic.pause(1000)
-    basic.clear_screen()
-    letter_showing = ""
-    if lives <= 0:
-        # If you die enough times it's possible for your lives to be less than zero!
-        basic.show_number(score)
-        basic.pause(10000) # TODO: replace this with a better way to die
+        pass
+        # what should we do when we're dead?
+
 basic.forever(on_forever)
