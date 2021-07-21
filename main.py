@@ -12,6 +12,7 @@ lives = 3
 isdead = False
 
 def on_button_pressed_a():
+    global letter_showing, lives, score # Looks like we needed to make these variables global here too.  I'll research that a bit.
     if letter_showing == "A":
         letter_showing = ""
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
@@ -22,6 +23,7 @@ def on_button_pressed_a():
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_B():
+    global letter_showing, lives, score
     if letter_showing == "B":
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
         score = score + 1
@@ -32,9 +34,7 @@ input.on_button_pressed(Button.B, on_button_pressed_B)
 
 
 def on_forever():
-    global letter_showing
-    global lives 
-    global score 
+    global letter_showing, lives, score 
     basic.pause(randint(0, 2000))
     if Math.random_boolean():
         letter_showing = "A"
@@ -45,8 +45,10 @@ def on_forever():
     basic.pause(1000)
     basic.clear_screen()
     letter_showing = ""
-    if lives <= 0: 
+
+    if lives <= 0: # If you die enough times it's possible for your lives to be less than zero! 
         basic.show_number(score)
+        basic.pause(10000) # TODO: replace this with a better way to die
 
 basic.forever(on_forever)
 
