@@ -21,6 +21,8 @@ def on_button_pressed_common(letter_2_check):
         music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
         check_if_dead()  
+def game_reset():
+    score = 0
 
 
 def on_button_pressed_a():

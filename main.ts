@@ -23,6 +23,10 @@ function on_button_pressed_common(letter_2_check: string) {
     
 }
 
+function game_reset() {
+    let score = 0
+}
+
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
     on_button_pressed_common("A")
 })
