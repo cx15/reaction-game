@@ -6,7 +6,6 @@
 
 score = 0
 letter_showing = ""
-lives = 0
 isdead = False
 lives = 3
 

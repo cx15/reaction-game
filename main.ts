@@ -5,9 +5,8 @@
 //  or press too late they lose points.
 let score = 0
 let letter_showing = ""
-let lives = 0
 let isdead = false
-lives = 3
+let lives = 3
 function on_button_pressed_common(letter_2_check: string) {
     
     if (letter_showing == letter_2_check) {
