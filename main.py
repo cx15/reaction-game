@@ -28,14 +28,7 @@ def on_button_pressed_a():
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_b():
-    global letter_showing, score, lives
-    if letter_showing == "B":
-        music.play_tone(462, music.beat(BeatFraction.WHOLE))
-        score = score + 1
-    else:
-        music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
-        lives = lives - 1
-        check_if_dead()
+   on_button_pressed_common("B")
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
 def check_if_dead():

@@ -27,16 +27,7 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
     on_button_pressed_common("A")
 })
 input.onButtonPressed(Button.B, function on_button_pressed_b() {
-    
-    if (letter_showing == "B") {
-        music.playTone(462, music.beat(BeatFraction.Whole))
-        score = score + 1
-    } else {
-        music.playTone(100 + lives * 20, music.beat(BeatFraction.Whole))
-        lives = lives - 1
-        check_if_dead()
-    }
-    
+    on_button_pressed_common("B")
 })
 function check_if_dead() {
     
