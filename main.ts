@@ -8,9 +8,9 @@ let letter_showing = ""
 let lives = 0
 let isdead = false
 lives = 3
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
+function on_button_pressed_common(letter_2_check: string) {
     
-    if (letter_showing == "A") {
+    if (letter_showing == letter_2_check) {
         letter_showing = ""
         basic.clearScreen()
         music.playTone(462, music.beat(BeatFraction.Whole))
@@ -21,6 +21,10 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
         check_if_dead()
     }
     
+}
+
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    on_button_pressed_common("A")
 })
 input.onButtonPressed(Button.B, function on_button_pressed_b() {
     
@@ -30,6 +34,7 @@ input.onButtonPressed(Button.B, function on_button_pressed_b() {
     } else {
         music.playTone(100 + lives * 20, music.beat(BeatFraction.Whole))
         lives = lives - 1
+        check_if_dead()
     }
     
 })

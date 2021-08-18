@@ -10,10 +10,9 @@ lives = 0
 isdead = False
 lives = 3
 
-
-def on_button_pressed_a():
+def on_button_pressed_common(letter_2_check):
     global letter_showing, score, lives
-    if letter_showing == "A":
+    if letter_showing == letter_2_check:
         letter_showing = ""
         basic.clear_screen()
         music.play_tone(462, music.beat(BeatFraction.WHOLE))
@@ -21,7 +20,11 @@ def on_button_pressed_a():
     else:
         music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
-        check_if_dead()
+        check_if_dead()  
+
+
+def on_button_pressed_a():
+   on_button_pressed_common("A")
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_button_pressed_b():
@@ -32,6 +35,7 @@ def on_button_pressed_b():
     else:
         music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
+        check_if_dead()
 input.on_button_pressed(Button.B, on_button_pressed_b)
 
 def check_if_dead():
