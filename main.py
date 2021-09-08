@@ -19,10 +19,20 @@ def on_button_pressed_common(letter_2_check):
     else:
         music.play_tone(100 + lives * 20, music.beat(BeatFraction.WHOLE))
         lives = lives - 1
-        check_if_dead()  
-def game_reset():
-    score = 0
+        check_if_dead() 
 
+def game_reset():
+    global score,letter_showing,isdead,lives
+    score = 0
+    letter_showing = ""
+    isdead = False
+    lives = 3
+    basic.show_icon(IconNames.HAPPY)
+
+def reset_game():
+    if isdead:
+        game_reset()
+input.on_button_pressed(Button.AB,reset_game)
 
 def on_button_pressed_a():
    on_button_pressed_common("A")
