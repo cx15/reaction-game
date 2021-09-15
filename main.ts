@@ -29,14 +29,17 @@ function game_reset() {
     isdead = false
     lives = 3
     basic.showIcon(IconNames.Happy)
+    music.playMelody("C5 D D F D F F D ", 120)
 }
 
+// fdf
 input.onButtonPressed(Button.AB, function reset_game() {
     if (isdead) {
         game_reset()
     }
     
 })
+// dfdfdf
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
     on_button_pressed_common("A")
 })

@@ -28,12 +28,13 @@ def game_reset():
     isdead = False
     lives = 3
     basic.show_icon(IconNames.HAPPY)
-
+    music.play_melody("C5 D D F D F F D ", 120)
+#fdf
 def reset_game():
     if isdead:
         game_reset()
 input.on_button_pressed(Button.AB,reset_game)
-
+#dfdfdf
 def on_button_pressed_a():
    on_button_pressed_common("A")
 input.on_button_pressed(Button.A, on_button_pressed_a)
