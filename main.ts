@@ -58,6 +58,7 @@ function check_if_dead() {
         //  Yes, we're dead.
         isdead = true
         basic.showIcon(IconNames.Ghost)
+        music.playMelody("F3 D3 A2", 60)
         basic.pause(2000)
         basic.showString("Score: " + score)
         if (score > hiscore) {

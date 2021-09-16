@@ -59,6 +59,7 @@ def check_if_dead():
         # Yes, we're dead.
         isdead = True
         basic.show_icon(IconNames.GHOST)
+        music.play_melody("F3 D3 A2", 60) 
         basic.pause(2000)
         basic.show_string("Score: " + score)
         if score > hiscore:
